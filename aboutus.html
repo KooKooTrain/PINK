@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
-        /* --- General Styling (Copied from index.html) --- */
         body {
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
@@ -68,8 +67,6 @@
             border-radius: 9999px;
         }
 
-
-        
         .frosted-card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px) brightness(1.1);
@@ -90,7 +87,6 @@
             box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4); 
         }
 
-        /* --- Background Animation (Copied from index.html) --- */
         .bg-animation-container {
             position: fixed;
             top: 0;
@@ -142,43 +138,23 @@
         }
 
         @keyframes float {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-            50% {
-                transform: translate(50px, -70px) scale(1.05);
-            }
-            100% {
-                transform: translate(0, 0) scale(1);
-            }
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, -70px) scale(1.05); }
+            100% { transform: translate(0, 0) scale(1); }
         }
         
-        /* ========================================================== */
-        /* DROP DOWN MENU STYLES - NOW OPAQUE (Alpha set to 1.0) */
-        /* ========================================================== */
-        
-        /* Dark Mode Dropdown (Default) */
-        .frosted-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px) brightness(1.1);
-            -webkit-backdrop-filter: blur(10px) brightness(1.1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        /* --- UPDATED: The dropdown now uses a slightly more opaque frosted background --- */
         .frosted-dropdown-card {
-            background: rgba(13, 13, 16, 0.85); /* Slightly darker base from body background */
+            background: rgba(13, 13, 16, 0.85);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border: 1px solid #c026d3; /* Pink border for pop */
+            border: 1px solid #c026d3;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 105, 180, 0.4);
         }
         
         .hover\:bg-pink-800\/50:hover {
-            background-color: #2a0e23; /* darker, subtle pink/purple on hover */
+            background-color: #2a0e23;
         }
 
-        /* --- Light Mode Styling (Copied from index.html) --- */
         .light-mode {
             background-color: #f7f3f8;
             color: #1f2937;
@@ -197,25 +173,19 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
-        /* Light Mode Dropdown (Opaque) */
         .light-mode .frosted-dropdown-card {
-            /* Changed alpha from 0.95 to 1.0 for opacity */
-            background: rgba(255, 255, 255, 1.0); 
+            background: rgba(255, 255, 255, 1.0);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid #f9a8d4; 
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* Update hover background color for light mode event links */
         .light-mode .hover\:bg-pink-800\/50:hover {
             background-color: #fce7f3; 
         }
-        /* Update link colors to be dark in light mode */
-        .light-mode .text-pink-200 { color: #8b5cf6 !important; } /* purple for title text */
-        .light-mode .text-gray-400 { color: #4b5563 !important; } /* dark grey for description text */
-
-
+        .light-mode .text-pink-200 { color: #8b5cf6 !important; }
+        .light-mode .text-gray-400 { color: #4b5563 !important; }
 
         .light-mode .nav-link {
             color: #1f2937;
@@ -238,7 +208,6 @@
         .light-mode .text-gray-200, .light-mode .text-gray-300 { color: #374151 !important; }
         .light-mode .text-gray-400 { color: #6b7280 !important; }
         .light-mode .text-pink-400 { color: #db2777 !important; }
-        .light-mode .text-gray-500 { color: #4b5563 !important; }
 
         .light-mode .orb {
             opacity: 0.08;
@@ -249,7 +218,6 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* --- Toggle Switch Styling (Copied from index.html) --- */
         .theme-toggle-container {
             display: flex;
             align-items: center;
@@ -287,10 +255,8 @@
             box-shadow: 0 0 10px rgba(255, 105, 180, 0.6); 
         }
 
-        /* Icon represents CURRENT theme */
         .slider:before {
             position: absolute;
-            /* In Light Mode (Unchecked), display the Sun */
             content: "☀️"; 
             height: 27px;
             width: 27px;
@@ -307,14 +273,12 @@
             z-index: 2;
         }
         
-        /* New Checkbox Status: CHECKED = DARK MODE */
         .toggle-switch input:checked + .slider {
             background: linear-gradient(145deg, #2c3e50, #34495e);
             box-shadow: 0 0 10px rgba(44, 62, 80, 0.5);
         }
 
         .toggle-switch input:checked + .slider:before {
-            /* In Dark Mode (Checked), display the Moon */
             transform: translateX(35px); 
             content: "🌙"; 
         }
@@ -352,11 +316,9 @@
             animation: floatCloud2 12s infinite linear;
         }
         
-        /* When unchecked (Light Mode), show clouds */
         .toggle-switch input:not(:checked) + .slider .cloud {
             opacity: 1; 
         }
-        /* When checked (Dark Mode), hide clouds */
         .toggle-switch input:checked + .slider .cloud {
             opacity: 0;
             transform: translateY(-20px);
@@ -379,20 +341,17 @@
 </head>
 <body class="text-white">
 
-    <!-- Background Animation -->
     <div class="bg-animation-container">
         <div class="orb orb-pink orb-1"></div>
         <div class="orb orb-purple orb-2"></div>
         <div class="orb orb-pink orb-3"></div>
     </div>
     
-    <!-- Header (Copied from index.html) -->
     <header class="sticky top-0 z-50 frosted-card shadow-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 
                 <div class="flex justify-start">
-                    <!-- Logo / Site Title -->
                     <div class="text-3xl font-extrabold tracking-tight pink-glow-text">
                         P.I.N.K.<span class="text-pink-400">!</span>
                     </div>
@@ -400,12 +359,9 @@
 
                 <div class="flex justify-center flex-grow">
                     <nav class="hidden md:flex space-x-6 lg:space-x-10">
-                        
-                        <!-- Navigation Links - Note: showPage now navigates to the respective file -->
                         <a href="./frontpage.html" id="link-home" class="nav-link nav-link-item text-lg font-medium py-1">
                             Home
                         </a>
-                        
                         <a href="./aboutus.html" id="link-aboutus" class="nav-link nav-link-item text-lg font-medium py-1 active-nav-link">
                             About Us
                         </a>
@@ -418,20 +374,14 @@
                                 </svg>
                             </button>
 
-                            <!-- UPDATED DROP DOWN MENU STRUCTURE: Using frosted-dropdown-card class -->
                             <div id="events-dropdown-menu" class="hidden absolute top-full mt-2 left-1/2 transform -translate-x-1/2 z-30 w-72 max-w-[calc(100vw-3rem)] p-2">
-                                <!-- Dropdown Content Container with Frosted Background -->
                                 <div class="rounded-xl shadow-2xl ring-2 ring-pink-500/30 overflow-hidden frosted-dropdown-card">
-                                    
                                     <div class="p-4">
                                         <h3 class="text-xl font-bold text-pink-300 border-b border-pink-500/50 pb-2 mb-4">P.I.N.K. Events</h3>
 
-                                        <!-- Event Link 1: Youth Summit -->
-                                        <!-- Adjusted text-pink-200 (purple in light mode) and text-gray-400 for better contrast -->
                                         <a href="#" onclick="showEvent('youth-summit'); return false;" 
                                             class="block -m-2 p-2 rounded-lg transition ease-in-out duration-200 hover:bg-pink-800/50">
                                             <div class="flex items-start">
-                                                <!-- Icon: Location Pin -->
                                                 <svg class="h-6 w-6 text-pink-400 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 3 9-3 9h18s-3-2-3-9"></path><path d="M10 3h4"></path><path d="M12 21h0.01"></path></svg>
                                                 <div class="ml-3">
                                                     <p class="text-base font-semibold text-pink-200">Youth Summit</p>
@@ -440,11 +390,9 @@
                                             </div>
                                         </a>
                                         
-                                        <!-- Event Link 2: Future Workshop -->
                                         <a href="#" onclick="showEvent('future-workshop'); return false;" 
                                             class="block -m-2 p-2 mt-2 rounded-lg transition ease-in-out duration-200 hover:bg-pink-800/50">
                                             <div class="flex items-start">
-                                                <!-- Icon: Calendar -->
                                                 <svg class="h-6 w-6 text-pink-400 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                                                 <div class="ml-3">
                                                     <p class="text-base font-semibold text-pink-200">Future Workshop</p>
@@ -456,7 +404,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- END UPDATED DROP DOWN MENU STRUCTURE -->
                         </div>
                         
                         <a href="#" id="link-resources" class="nav-link nav-link-item text-lg font-medium py-1">
@@ -486,7 +433,6 @@
         
         <section id="about-content" class="text-center">
             
-            <!-- Mission & Vision Section -->
             <div class="max-w-7xl mx-auto p-8 md:p-12 rounded-xl frosted-card mb-12">
                 <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tighter pink-glow-text">
                     Our Mission & Vision
@@ -514,7 +460,7 @@
                 </div>
             </div>
 
-            <!-- Meet Our Team Section - Updated to 2-4-4 Grid -->
+
             <div class="max-w-7xl mx-auto p-8 md:p-12 rounded-xl frosted-card text-left mt-12">
                 <h2 class="text-4xl md:text-5xl font-extrabold pink-glow-text mb-4 text-center">
                     Meet Our Core Team
