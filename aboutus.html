@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P.I.N.K. - About Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* --- General Styling (Copied from index.html) --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background-color: #0d0d10;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex-grow: 1;
+        }
+
+        .pink-glow-text {
+            text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 40px rgba(255, 105, 180, 0.5);
+            color: #fce7f3;
+        }
+        
+        .pink-gradient-button {
+            background-image: linear-gradient(to right, #ff69b4, #e879f9, #a78bfa);
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .pink-gradient-button:hover {
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .nav-link {
+            transition: color 0.2s, text-shadow 0.2s, font-weight 0.2s;
+            color: #ccc;
+            position: relative; 
+            padding-bottom: 4px; 
+        }
+
+        .nav-link:hover {
+            color: #fce7f3;
+            text-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
+        }
+
+        .active-nav-link {
+            color: #fce7f3 !important;
+            text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4 !important;
+            font-weight: 700;
+        }
+        
+        .active-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 80px; 
+            height: 2px;
+            background-color: #EC4899;
+            border-radius: 9999px;
+        }
+
+
+        
+        .frosted-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px) brightness(1.1);
+            -webkit-backdrop-filter: blur(10px) brightness(1.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .team-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: default;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4); 
+        }
+
+        /* --- Background Animation (Copied from index.html) --- */
+        .bg-animation-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -10;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.2;
+            filter: blur(60px);
+            animation: float 20s infinite ease-in-out alternate;
+        }
+
+        .orb-pink {
+            background-color: #ff69b4;
+            width: 350px;
+            height: 350px;
+        }
+
+        .orb-purple {
+            background-color: #a78bfa;
+            width: 500px;
+            height: 500px;
+        }
+
+        .orb-1 {
+            top: 5%;
+            left: 10%;
+            animation-duration: 16s;
+        }
+
+        .orb-2 {
+            bottom: 15%;
+            right: 20%;
+            animation-duration: 22s;
+        }
+
+        .orb-3 {
+            top: 50%;
+            left: 75%;
+            animation-duration: 18s;
+            transform: scale(0.8);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(50px, -70px) scale(1.05);
+            }
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+        
+        /* ========================================================== */
+        /* DROP DOWN MENU STYLES - NOW OPAQUE (Alpha set to 1.0) */
+        /* ========================================================== */
+        
+        /* Dark Mode Dropdown (Default) */
+        .frosted-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px) brightness(1.1);
+            -webkit-backdrop-filter: blur(10px) brightness(1.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* --- UPDATED: The dropdown now uses a slightly more opaque frosted background --- */
+        .frosted-dropdown-card {
+            background: rgba(13, 13, 16, 0.85); /* Slightly darker base from body background */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid #c026d3; /* Pink border for pop */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 105, 180, 0.4);
+        }
+        
+        .hover\:bg-pink-800\/50:hover {
+            background-color: #2a0e23; /* darker, subtle pink/purple on hover */
+        }
+
+        /* --- Light Mode Styling (Copied from index.html) --- */
+        .light-mode {
+            background-color: #f7f3f8;
+            color: #1f2937;
+        }
+
+        .light-mode .pink-glow-text {
+            color: #b52973;
+            text-shadow: 0 0 5px rgba(255, 105, 180, 0.4);
+        }
+        
+        .light-mode .frosted-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px) brightness(1.0);
+            -webkit-backdrop-filter: blur(8px) brightness(1.0);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Light Mode Dropdown (Opaque) */
+        .light-mode .frosted-dropdown-card {
+            /* Changed alpha from 0.95 to 1.0 for opacity */
+            background: rgba(255, 255, 255, 1.0); 
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid #f9a8d4; 
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Update hover background color for light mode event links */
+        .light-mode .hover\:bg-pink-800\/50:hover {
+            background-color: #fce7f3; 
+        }
+        /* Update link colors to be dark in light mode */
+        .light-mode .text-pink-200 { color: #8b5cf6 !important; } /* purple for title text */
+        .light-mode .text-gray-400 { color: #4b5563 !important; } /* dark grey for description text */
+
+
+
+        .light-mode .nav-link {
+            color: #1f2937;
+            text-shadow: none;
+        }
+        .light-mode .nav-link:hover {
+            color: #d946ef;
+        }
+        
+        .light-mode .active-nav-link {
+            color: #c026d3 !important;
+            text-shadow: none !important; 
+            font-weight: 700;
+        }
+        .light-mode .active-nav-link::after {
+            background-color: #c026d3; 
+        }
+
+        .light-mode .text-pink-300 { color: #d946ef !important; }
+        .light-mode .text-gray-200, .light-mode .text-gray-300 { color: #374151 !important; }
+        .light-mode .text-gray-400 { color: #6b7280 !important; }
+        .light-mode .text-pink-400 { color: #db2777 !important; }
+        .light-mode .text-gray-500 { color: #4b5563 !important; }
+
+        .light-mode .orb {
+            opacity: 0.08;
+            filter: blur(50px);
+        }
+        .light-mode .team-card {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Toggle Switch Styling (Copied from index.html) --- */
+        .theme-toggle-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 70px;
+            height: 35px;
+            transform: scale(1.1);
+            transition: transform 0.2s;
+        }
+
+        .toggle-switch:hover {
+            transform: scale(1.15);
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(145deg, #ff69b4, #e879f9);
+            transition: 0.4s;
+            border-radius: 34px;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.6); 
+        }
+
+        /* Icon represents CURRENT theme */
+        .slider:before {
+            position: absolute;
+            /* In Light Mode (Unchecked), display the Sun */
+            content: "☀️"; 
+            height: 27px;
+            width: 27px;
+            left: 4px;
+            bottom: 4px;
+            background: white;
+            transition: 0.4s;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+        
+        /* New Checkbox Status: CHECKED = DARK MODE */
+        .toggle-switch input:checked + .slider {
+            background: linear-gradient(145deg, #2c3e50, #34495e);
+            box-shadow: 0 0 10px rgba(44, 62, 80, 0.5);
+        }
+
+        .toggle-switch input:checked + .slider:before {
+            /* In Dark Mode (Checked), display the Moon */
+            transform: translateX(35px); 
+            content: "🌙"; 
+        }
+
+        .clouds {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .cloud {
+            position: absolute;
+            width: 18px; 
+            height: 18px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.1));
+            opacity: 0;
+        }
+
+        .cloud1 {
+            top: 5px;
+            left: 5px;
+            transform: scale(0.9);
+            animation: floatCloud1 8s infinite linear;
+        }
+
+        .cloud2 {
+            top: 10px;
+            left: 20px;
+            transform: scale(0.6);
+            animation: floatCloud2 12s infinite linear;
+        }
+        
+        /* When unchecked (Light Mode), show clouds */
+        .toggle-switch input:not(:checked) + .slider .cloud {
+            opacity: 1; 
+        }
+        /* When checked (Dark Mode), hide clouds */
+        .toggle-switch input:checked + .slider .cloud {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        @keyframes floatCloud1 {
+            0% { transform: translateX(-10px) scale(0.9); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateX(60px) scale(0.9); opacity: 0; }
+        }
+
+        @keyframes floatCloud2 {
+            0% { transform: translateX(-10px) scale(0.6); opacity: 0; }
+            20% { opacity: 0.7; }
+            80% { opacity: 0.7; }
+            100% { transform: translateX(60px) scale(0.6); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- Background Animation -->
+    <div class="bg-animation-container">
+        <div class="orb orb-pink orb-1"></div>
+        <div class="orb orb-purple orb-2"></div>
+        <div class="orb orb-pink orb-3"></div>
+    </div>
+    
+    <!-- Header (Copied from index.html) -->
+    <header class="sticky top-0 z-50 frosted-card shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                
+                <div class="flex justify-start">
+                    <!-- Logo / Site Title -->
+                    <div class="text-3xl font-extrabold tracking-tight pink-glow-text">
+                        P.I.N.K.<span class="text-pink-400">!</span>
+                    </div>
+                </div>
+
+                <div class="flex justify-center flex-grow">
+                    <nav class="hidden md:flex space-x-6 lg:space-x-10">
+                        
+                        <!-- Navigation Links - Note: showPage now navigates to the respective file -->
+                        <a href="./frontpage.html" id="link-home" class="nav-link nav-link-item text-lg font-medium py-1">
+                            Home
+                        </a>
+                        
+                        <a href="./aboutus.html" id="link-aboutus" class="nav-link nav-link-item text-lg font-medium py-1 active-nav-link">
+                            About Us
+                        </a>
+
+                        <div class="relative">
+                            <button id="events-dropdown-btn" type="button" class="nav-link text-lg font-medium text-gray-200 hover:text-pink-300 transition-colors duration-200 py-1 flex items-center" aria-expanded="false">
+                                Events
+                                <svg class="ml-2 h-5 w-5 text-pink-300 transition-transform duration-200" id="events-dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+
+                            <!-- UPDATED DROP DOWN MENU STRUCTURE: Using frosted-dropdown-card class -->
+                            <div id="events-dropdown-menu" class="hidden absolute top-full mt-2 left-1/2 transform -translate-x-1/2 z-30 w-72 max-w-[calc(100vw-3rem)] p-2">
+                                <!-- Dropdown Content Container with Frosted Background -->
+                                <div class="rounded-xl shadow-2xl ring-2 ring-pink-500/30 overflow-hidden frosted-dropdown-card">
+                                    
+                                    <div class="p-4">
+                                        <h3 class="text-xl font-bold text-pink-300 border-b border-pink-500/50 pb-2 mb-4">P.I.N.K. Events</h3>
+
+                                        <!-- Event Link 1: Youth Summit -->
+                                        <!-- Adjusted text-pink-200 (purple in light mode) and text-gray-400 for better contrast -->
+                                        <a href="#" onclick="showEvent('youth-summit'); return false;" 
+                                            class="block -m-2 p-2 rounded-lg transition ease-in-out duration-200 hover:bg-pink-800/50">
+                                            <div class="flex items-start">
+                                                <!-- Icon: Location Pin -->
+                                                <svg class="h-6 w-6 text-pink-400 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 3 9-3 9h18s-3-2-3-9"></path><path d="M10 3h4"></path><path d="M12 21h0.01"></path></svg>
+                                                <div class="ml-3">
+                                                    <p class="text-base font-semibold text-pink-200">Youth Summit</p>
+                                                    <p class="mt-0.5 text-sm text-gray-400">Our breakthrough event from last month.</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        
+                                        <!-- Event Link 2: Future Workshop -->
+                                        <a href="#" onclick="showEvent('future-workshop'); return false;" 
+                                            class="block -m-2 p-2 mt-2 rounded-lg transition ease-in-out duration-200 hover:bg-pink-800/50">
+                                            <div class="flex items-start">
+                                                <!-- Icon: Calendar -->
+                                                <svg class="h-6 w-6 text-pink-400 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                                <div class="ml-3">
+                                                    <p class="text-base font-semibold text-pink-200">Future Workshop</p>
+                                                    <p class="mt-0.5 text-sm text-gray-400">Register for the next Q3 planning session.</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END UPDATED DROP DOWN MENU STRUCTURE -->
+                        </div>
+                        
+                        <a href="#" id="link-resources" class="nav-link nav-link-item text-lg font-medium py-1">
+                            Resources
+                        </a>
+
+                    </nav>
+                </div>
+                
+                <div class="flex-shrink-0 theme-toggle-container">
+                    <label class="toggle-switch" for="theme-checkbox">
+                        <input type="checkbox" id="theme-checkbox">
+                        <span class="slider">
+                            <div class="clouds">
+                                <div class="cloud cloud1"></div>
+                                <div class="cloud cloud2"></div>
+                            </div>
+                        </span>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <main class="w-full mx-auto px-6 py-12">
+        
+        <section id="about-content" class="text-center">
+            
+            <!-- Mission & Vision Section -->
+            <div class="max-w-7xl mx-auto p-8 md:p-12 rounded-xl frosted-card mb-12">
+                <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tighter pink-glow-text">
+                    Our Mission & Vision
+                </h1>
+                <p class="2xl text-pink-300 mb-10 font-light max-w-4xl mx-auto">
+                    P.I.N.K. is more than just a movement; it's a foundation for a future where health, bodies, and pleasure are discussed openly, without shame or stigma.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mt-8">
+                    
+                    <div class="p-6 rounded-xl team-card">
+                        <h3 class="text-3xl font-bold pink-glow-text mb-3">Our Mission</h3>
+                        <p class="text-lg text-gray-300">
+                            To empower individuals by providing accurate, sex-positive, and inclusive education on reproductive health, body image, and intimacy. We strive to create digital and physical safe spaces where vulnerability is celebrated and knowledge is shared freely.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-xl team-card">
+                        <h3 class="text-3xl font-bold pink-glow-text mb-3">Our Vision</h3>
+                        <p class="text-lg text-gray-300">
+                            To see a world where taboos surrounding human sexuality and bodily functions are completely dismantled, leading to healthier relationships, greater self-acceptance, and informed healthcare decisions for all.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Meet Our Team Section - Updated to 2-4-4 Grid -->
+            <div class="max-w-7xl mx-auto p-8 md:p-12 rounded-xl frosted-card text-left mt-12">
+                <h2 class="text-4xl md:text-5xl font-extrabold pink-glow-text mb-4 text-center">
+                    Meet Our Core Team
+                </h2>
+                <p class="text-lg text-gray-300 mb-12 text-center max-w-4xl mx-auto">
+                    The passionate individuals driving the P.I.N.K. movement forward. We believe in authenticity, transparency, and advocacy.
+                </p>
+
+                <!-- 1. Top Tier (2 Members) - Centered in a row of 2 -->
+                <div class="flex justify-center mb-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl w-full">
+                        
+                        <!-- Member 1: Manasvi Singh (Founder) -->
+                        <div class="team-card text-center">
+                            <img class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-pink-400" 
+                                src="uploaded:image_9fdfb3.jpg-e4420a17-58a9-420b-9eff-3a2de6a25657" 
+                                onerror="this.onerror=null;this.src='https://placehold.co/96x96/ff69b4/ffffff?text=M.S'"
+                                alt="Manasvi Singh's profile picture."
+                            >
+                            <h4 class="text-xl font-semibold pink-glow-text">Manasvi Singh</h4>
+                            <p class="text-pink-300 text-sm font-medium mb-2">Founder & Visionary</p>
+                            <p class="text-gray-400 text-sm">Dedicated to dismantling social taboos around women's health and pleasure.</p>
+                        </div>
+
+                        <!-- Member 2: The Developer (You) -->
+                        <div class="team-card text-center">
+                            <img class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-purple-400" 
+                                src="https://placehold.co/96x96/a78bfa/ffffff?text=DEV" 
+                                onerror="this.onerror=null;this.src='https://placehold.co/96x96/a78bfa/ffffff?text=DEV'"
+                                alt="The Developer's profile picture."
+                            >
+                            <h4 class="text-xl font-semibold pink-glow-text">Divya Bhosale</h4>
+                            <p class="text-pink-300 text-sm font-medium mb-2">Web Developer</p>
+                            <p class="text-gray-400 text-sm">Building the digital foundation that connects P.I.N.K. to the world.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Middle Tier (4 Members) - Row of 4 -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+                    
+                    <!-- Member 3: Ananya S.V. (Co Founder) -->
+                    <div class="team-card text-center">
+                        <img class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-pink-400" 
+                            src="uploaded:image_9fe02c.jpg-b69cf83f-7c25-44a9-9e50-55286fc95907" 
+                            onerror="this.onerror=null;this.src='https://placehold.co/96x96/ff69b4/ffffff?text=A.S.V'"
+                            alt="Ananya S.V.'s profile picture."
+                        >
+                        <h4 class="text-xl font-semibold pink-glow-text">Ananya S.V.</h4>
+                        <p class="text-pink-300 text-sm font-medium mb-2">Co Founder</p>
+                        <p class="text-gray-400 text-sm">Working alongside the founder to drive strategic growth and advocacy efforts.</p>
+                    </div>
+
+                    <!-- Member 4: Ipsita Ray (Legal Head) -->
+                    <div class="team-card text-center">
+                        <img class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-purple-400" 
+                            src="uploaded:image_9fe0aa.jpg-08efcba5-5bab-428b-b6a2-a0f1ab6c8026" 
+                            onerror="this.onerror=null;this.src='https://placehold.co/96x96/a78bfa/ffffff?text=I.R'"
+                            alt="Ipsita Ray's profile picture."
+                        >
+                        <h4 class="text-xl font-semibold pink-glow-text">Ipsita Ray</h4>
+                        <p class="text-pink-300 text-sm font-medium mb-2">Legal Head</p>
+                        <p class="text-gray-400 text-sm">Ensuring all initiatives are ethically sound and legally compliant.</p>
+                    </div>
+
+                    <!-- Member 5: Sarah Khan (Head of Events) -->
+                    <div class="team-card text-center">
+                        <img class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-pink-600" 
+                            src="uploaded:image_9fe047.jpg-7a1a1a6f-1828-48a0-ade0-1250f9482019" 
+                            onerror="this.onerror=null;this.src='https://placehold.co/96x96/c026d3/ffffff?text=S.K'"
+                            alt="Sarah Khan's profile picture."
+                        >
+                        <h4 class="text-xl font-semibold pink-glow-text">Sarah Khan</h4>
+                        <p class="text-pink-300 text-sm font-medium mb-2">Head of Events</p>
+                        <p class="text-gray-400 text-sm">The expert behind our impactful physical and virtual engagement summits.</p>
+                    </div>
+
+                    <!-- Member 6: Prisha Ganapathy (Social Media Head) -->
+                    <div class="team-card text-center">
+                        <img class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-pink-400" 
+                            src="uploaded:image_9fe04d.jpg-35520994-ffff-4b75-994b-46181de0bae5" 
+                            onerror="this.onerror=null;this.src='https://placehold.co/96x96/ff69b4/ffffff?text=P.G'"
+                            alt="Prisha Ganapathy's profile picture."
+                        >
+                        <h4 class="text-xl font-semibold pink-glow-text">Prisha Ganapathy</h4>
+                        <p class="text-pink-300 text-sm font-medium mb-2">Social Media Head</p>
+                        <p class="text-gray-400 text-sm">Crafting our voice and connecting with the community across all platforms.</p>
+                    </div>
+
+                </div>
+
+                <!-- 3. Bottom Tier (4 Members) - Row of 4 -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    
+                    <!-- Member 7: Muskan S.U. (Science Head) -->
+                    <div class="team-card text-center">
+                        <img class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-purple-400" 
+                            src="uploaded:image_9fe083.jpg-59ac46be-f3d9-4170-bf61-bb515480ecd1" 
+                            onerror="this.onerror=null;this.src='https://placehold.co/96x96/a78bfa/ffffff?text=M.S.U'"
+                            alt="Muskan S.U.'s profile picture."
+                        >
+                        <h4 class="text-xl font-semibold pink-glow-text">Muskan S.U.</h4>
+                        <p class="text-pink-300 text-sm font-medium mb-2">Science Head</p>
+                        <p class="text-gray-400 text-sm">Providing evidence-based knowledge on reproductive and sexual health.</p>
+                    </div>
+
+                    <!-- Member 8: Mokshita Puttagunt (Survey and Feedback Head) -->
+                    <div class="team-card text-center">
+                        <img class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-pink-600" 
+                            src="uploaded:image_9fe088.jpg-00c7fef9-59fa-4b8b-8cd7-0805f290111f" 
+                            onerror="this.onerror=null;this.src='https://placehold.co/96x96/c026d3/ffffff?text=M.P'"
+                            alt="Mokshita Puttagunt's profile picture."
+                        >
+                        <h4 class="text-xl font-semibold pink-glow-text">Mokshita Puttagunt</h4>
+                        <p class="text-pink-300 text-sm font-medium mb-2">Survey & Feedback Head</p>
+                        <p class="text-gray-400 text-sm">Dedicated to listening to our community and driving data-led improvements.</p>
+                    </div>
+
+                    <!-- Member 9: Abeer Kazi (Commerce Head) - Updated -->
+                    <div class="team-card text-center">
+                        <img class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-pink-400" 
+                            src="uploaded:image_a03adb.jpg-e63e7b84-734a-4d34-9420-2ea94aaa0c12" 
+                            onerror="this.onerror=null;this.src='https://placehold.co/96x96/ff69b4/ffffff?text=A.K'"
+                            alt="Abeer Kazi's profile picture."
+                        >
+                        <h4 class="text-xl font-semibold pink-glow-text">Abeer Kazi</h4>
+                        <p class="text-pink-300 text-sm font-medium mb-2">Commerce Head</p>
+                        <p class="text-gray-400 text-sm">Handling the financial and economic strategy of the P.I.N.K. initiatives.</p>
+                    </div>
+
+                    <!-- Member 10: Hayah Fathima (Volunteers Head) - Updated -->
+                    <div class="team-card text-center">
+                        <img class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-purple-400" 
+                            src="uploaded:image_a03da3.jpg-b34e7a3b-d8c2-485d-b781-5d9fe9fa243e" 
+                            onerror="this.onerror=null;this.src='https://placehold.co/96x96/a78bfa/ffffff?text=H.F'"
+                            alt="Hayah Fathima's profile picture."
+                        >
+                        <h4 class="text-xl font-semibold pink-glow-text">Hayah Fathima</h4>
+                        <p class="text-pink-300 text-sm font-medium mb-2">Volunteers Head</p>
+                        <p class="text-gray-400 text-sm">Managing our incredible network of dedicated volunteers and community outreach.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer (Copied from index.html) -->
+    <footer class="mt-12 py-8 frosted-card">
+        <div class="w-full mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-4 md:space-y-0">
+                
+                <div class="flex items-center space-x-4">
+                    <a href="https://www.instagram.com/_pink._.2025/" target="_blank" rel="noopener noreferrer" class="instagram-icon hover:scale-110 transform transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <p class="text-sm text-gray-400">&copy; 2024 P.I.N.K. All rights reserved.</p>
+                </div>
+
+                <div class="text-sm text-gray-400">
+                    Website designed and developed by 
+                    <a href="https://www.instagram.com/ft.dixya/" target="_blank" rel="noopener noreferrer" class="text-pink-300 hover:text-pink-100 transition-colors duration-300 font-medium">
+                        Divya Bhosale (Koo)
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Placeholder functions for dropdown and events, kept for consistency
+        function toggleDropdown() {
+            const dropdown = document.getElementById('events-dropdown-menu');
+            const button = document.getElementById('events-dropdown-btn');
+            const icon = document.getElementById('events-dropdown-icon');
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+            if (isExpanded) {
+                dropdown.classList.add('hidden');
+                button.setAttribute('aria-expanded', 'false');
+                icon.classList.remove('rotate-180');
+            } else {
+                dropdown.classList.remove('hidden');
+                button.setAttribute('aria-expanded', 'true');
+                icon.classList.add('rotate-180');
+            }
+        }
+
+        document.addEventListener('click', (event) => {
+            const dropdown = document.getElementById('events-dropdown-menu');
+            const button = document.getElementById('events-dropdown-btn');
+
+            if (dropdown && button && !button.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.add('hidden');
+                button.setAttribute('aria-expanded', 'false');
+                document.getElementById('events-dropdown-icon').classList.remove('rotate-180');
+            }
+        });
+
+        document.getElementById('events-dropdown-btn').addEventListener('click', toggleDropdown);
+
+        function showEvent(eventId) {
+            console.log(`Navigating to event details for: ${eventId}`);
+            toggleDropdown();
+        }
+
+        // Theme Toggle Setup (Copied from index.html)
+        function setupThemeToggle() {
+            const toggle = document.getElementById('theme-checkbox');
+            const body = document.body;
+
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+
+            if (savedTheme === 'light') {
+                body.classList.add('light-mode');
+                toggle.checked = false; 
+            } else {
+                body.classList.remove('light-mode');
+                toggle.checked = true; 
+            }
+
+            toggle.addEventListener('change', (e) => {
+                if (e.target.checked) {
+                    // Checkbox is CHECKED -> Apply DARK Mode
+                    body.classList.remove('light-mode'); 
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    // Checkbox is UNCHECKED -> Apply LIGHT Mode
+                    body.classList.add('light-mode'); 
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        }
+
+        window.onload = function() {
+            setupThemeToggle();
+            // Highlight the "About Us" link on load
+            document.getElementById('link-aboutus').classList.add('active-nav-link');
+        };
+
+    </script>
+</body>
+</html>
