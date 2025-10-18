@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P.I.N.K. - Resources</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      background-color: #0d0d10;
+      color: white;
+    }
+        .pink-glow-text {
+            text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 40px rgba(255, 105, 180, 0.5);
+            color: #fce7f3;
+        }
+        
+        .pink-gradient-button {
+            background-image: linear-gradient(to right, #ff69b4, #e879f9, #a78bfa);
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .pink-gradient-button:hover {
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .nav-link {
+            transition: color 0.2s, text-shadow 0.2s, font-weight 0.2s;
+            color: #ccc;
+            position: relative; 
+            padding-bottom: 4px; 
+        }
+
+        .nav-link:hover {
+            color: #fce7f3;
+            text-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
+        }
+
+        .active-nav-link {
+            color: #fce7f3 !important;
+            text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4 !important;
+            font-weight: 700;
+        }
+        
+        .active-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 80px; 
+            height: 2px;
+            background-color: #EC4899;
+            border-radius: 9999px;
+        }
+        
+        .frosted-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px) brightness(1.1);
+            -webkit-backdrop-filter: blur(10px) brightness(1.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .frosted-dropdown-card {
+            background: rgba(13, 13, 16, 0.85); 
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid #c026d3; 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .awareness-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+            padding: 1rem;
+            border-radius: 0.75rem;
+        }
+
+        .awareness-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.5); 
+        }
+
+        .bg-animation-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -10;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.2;
+            filter: blur(60px);
+            animation: float 20s infinite ease-in-out alternate;
+        }
+
+        .orb-pink {
+            background-color: #ff69b4;
+            width: 350px;
+            height: 350px;
+        }
+
+        .orb-purple {
+            background-color: #a78bfa;
+            width: 500px;
+            height: 500px;
+        }
+
+        .orb-1 {
+            top: 5%;
+            left: 10%;
+            animation-duration: 16s;
+        }
+
+        .orb-2 {
+            bottom: 15%;
+            right: 20%;
+            animation-duration: 22s;
+        }
+
+        .orb-3 {
+            top: 50%;
+            left: 75%;
+            animation-duration: 18s;
+            transform: scale(0.8);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(50px, -70px) scale(1.05);
+            }
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+        
+        .light-mode {
+            background-color: #f7f3f8;
+            color: #1f2937;
+        }
+
+        .light-mode .pink-glow-text {
+            color: #b52973;
+            text-shadow: 0 0 5px rgba(255, 105, 180, 0.4);
+        }
+        
+        .light-mode .frosted-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px) brightness(1.0);
+            -webkit-backdrop-filter: blur(8px) brightness(1.0);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .light-mode .frosted-dropdown-card {
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid #f9a8d4; 
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .light-mode .hover\:bg-pink-800\/50:hover {
+            background-color: #fce7f3; 
+        }
+        .light-mode .text-pink-200 { color: #8b5cf6 !important; } 
+        .light-mode .text-gray-400 { color: #4b5563 !important; } 
+
+
+        .light-mode .nav-link {
+            color: #1f2937;
+            text-shadow: none;
+        }
+        .light-mode .nav-link:hover {
+            color: #d946ef;
+        }
+        
+        .light-mode .active-nav-link {
+            color: #c026d3 !important;
+            text-shadow: none !important; 
+            font-weight: 700;
+        }
+        .light-mode .active-nav-link::after {
+            background-color: #c026d3; 
+        }
+
+        .light-mode .text-pink-300 { color: #d946ef !important; }
+        .light-mode .text-gray-200, .light-mode .text-gray-300 { color: #374151 !important; }
+        .light-mode .text-gray-400 { color: #6b7280 !important; }
+        .light-mode .text-pink-400 { color: #db2777 !important; }
+        .light-mode .text-gray-500 { color: #4b5563 !important; }
+
+        .light-mode .orb {
+            opacity: 0.08;
+            filter: blur(50px);
+        }
+
+        .theme-toggle-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 70px;
+            height: 35px;
+            transform: scale(1.1);
+            transition: transform 0.2s;
+        }
+
+        .toggle-switch:hover {
+            transform: scale(1.15);
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(145deg, #ff69b4, #e879f9);
+            transition: 0.4s;
+            border-radius: 34px;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.6); 
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "☀️"; 
+            height: 27px;
+            width: 27px;
+            left: 4px;
+            bottom: 4px;
+            background: white;
+            transition: 0.4s;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+        
+        .toggle-switch input:checked + .slider {
+            background: linear-gradient(145deg, #2c3e50, #34495e);
+            box-shadow: 0 0 10px rgba(44, 62, 80, 0.5);
+        }
+
+        .toggle-switch input:checked + .slider:before {
+            transform: translateX(35px); 
+            content: "🌙"; 
+        }
+
+        .clouds {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .cloud {
+            position: absolute;
+            width: 18px; 
+            height: 18px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.1));
+            opacity: 0;
+        }
+
+        .cloud1 {
+            top: 5px;
+            left: 5px;
+            transform: scale(0.9);
+            animation: floatCloud1 8s infinite linear;
+        }
+
+        .cloud2 {
+            top: 10px;
+            left: 20px;
+            transform: scale(0.6);
+            animation: floatCloud2 12s infinite linear;
+        }
+        
+        .toggle-switch input:not(:checked) + .slider .cloud {
+            opacity: 1; 
+        }
+        .toggle-switch input:checked + .slider .cloud {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        @keyframes floatCloud1 {
+            0% { transform: translateX(-10px) scale(0.9); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateX(60px) scale(0.9); opacity: 0; }
+        }
+
+        @keyframes floatCloud2 {
+            0% { transform: translateX(-10px) scale(0.6); opacity: 0; }
+            20% { opacity: 0.7; }
+            80% { opacity: 0.7; }
+            100% { transform: translateX(60px) scale(0.6); opacity: 0; }
+        }
+  </style>
+</head>
+<body class="text-white">
+
+    <div class="bg-animation-container">
+        <div class="orb orb-pink orb-1"></div>
+        <div class="orb orb-purple orb-2"></div>
+        <div class="orb orb-pink orb-3"></div>
+    </div>
+    
+    <header class="sticky top-0 z-50 frosted-card shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                
+                <div class="flex justify-start">
+                    <div class="text-3xl font-extrabold tracking-tight pink-glow-text">
+                        P.I.N.K.<span class="text-pink-400">!</span>
+                    </div>
+                </div>
+
+                <div class="flex justify-center flex-grow">
+                    <nav class="hidden md:flex space-x-6 lg:space-x-10">
+                        
+                        <a href="./frontpage.html" id="link-home" onclick="showPage('mainpage', 'link-home')" class="nav-link nav-link-item text-lg font-medium py-1">
+                            Home
+                        </a>
+                        
+                        <a href="./aboutus.html" id="link-aboutus" onclick="showPage('aboutus', 'link-aboutus')" class="nav-link nav-link-item text-lg font-medium py-1">
+                            About Us
+                        </a>
+
+                        <div class="relative">
+                            <button id="events-dropdown-btn" type="button" class="nav-link text-lg font-medium text-gray-200 hover:text-pink-300 transition-colors duration-200 py-1 flex items-center" aria-expanded="false">
+                                Events
+                                <svg class="ml-2 h-5 w-5 text-pink-300 transition-transform duration-200" id="events-dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+
+                            <div id="events-dropdown-menu" class="hidden absolute top-full mt-2 left-1/2 transform -translate-x-1/2 z-30 w-72 max-w-[calc(100vw-3rem)] p-2">
+                                <div class="rounded-xl shadow-2xl ring-2 ring-pink-500/30 overflow-hidden frosted-dropdown-card">
+                                    
+                                    <div class="p-4">
+                                        <h3 class="text-xl font-bold text-pink-300 border-b border-pink-500/50 pb-2 mb-4">P.I.N.K. Events </h3>
+
+                                        <a href="#" onclick="showEvent('youth-summit'); return false;" 
+                                            class="block -m-2 p-2 rounded-lg transition ease-in-out duration-200 hover:bg-pink-800/50">
+                                            <div class="flex items-start">
+                                                <svg class="h-6 w-6 text-pink-400 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 3 9-3 9h18s-3-2-3-9"></path><path d="M10 3h4"></path><path d="M12 21h0.01"></path></svg>
+                                                <div class="ml-3">
+                                                    <p class="text-base font-semibold text-pink-200">Youth Summit</p>
+                                                    <p class="mt-0.5 text-sm text-gray-400">Our breakthrough event from last month.</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        
+                                        <a href="#" onclick="showEvent('future-workshop'); return false;" 
+                                            class="block -m-2 p-2 mt-2 rounded-lg transition ease-in-out duration-200 hover:bg-pink-800/50">
+                                            <div class="flex items-start">
+                                                <svg class="h-6 w-6 text-pink-400 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                                <div class="ml-3">
+                                                    <p class="text-base font-semibold text-pink-200">Future Workshop</p>
+                                                    <p class="mt-0.5 text-sm text-gray-400">Register for the next Q3 planning session.</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="./resources.html" id="link-resources" onclick="showPage('resources', 'link-resources')" class="nav-link nav-link-item text-lg font-medium py-1  active-nav-link">
+                            Resources
+                        </a>
+
+                    </nav>
+                </div>
+                
+                <div class="flex-shrink-0 theme-toggle-container">
+                    <label class="toggle-switch" for="theme-checkbox">
+                        <input type="checkbox" id="theme-checkbox">
+                        <span class="slider">
+                            <div class="clouds">
+                                <div class="cloud cloud1"></div>
+                                <div class="cloud cloud2"></div>
+                            </div>
+                        </span>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+  <main class="w-full mx-auto px-6 py-16">
+    <div class="max-w-7xl mx-auto text-center mb-16">
+      <h1 class="text-6xl md:text-7xl font-extrabold pink-glow-text mb-6">Resources</h1>
+      <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+        Empower yourself with knowledge. Explore verified, inclusive, and stigma-free information about <span class="text-pink-400 font-semibold">health, wellness, and self-care</span>.
+      </p>
+    </div>
+    
+    <section class="max-w-6xl mx-auto mb-20">
+        <div class="frosted-card rounded-2xl p-8 md:p-12 text-center shadow-2xl border-purple-500/50 hover:shadow-pink-500/30 transition duration-500">
+           <h2 class="text-4xl md:text-5xl font-extrabold mb-4 pink-glow-text">Connect with P.I.N.K.!</h2>
+           <p class="text-lg text-gray-300 mb-8 max-w-3xl mx-auto">
+                Join our movement, get live updates, and engage with the community. Everything is happening on Instagram.
+            </p>
+            
+            <a href="https://www.instagram.com/_pink._.2025/" target="_blank" class="pink-gradient-button text-white text-xl md:text-2xl font-bold px-10 py-4 rounded-full inline-flex items-center space-x-3 transition duration-300 transform hover:scale-[1.03]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                <span>Check out our Instagram Page</span>
+            </a>
+            <p class="mt-4 text-sm text-gray-500">@\_pink.\_2025</p>
+        </div>
+    </section>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-7xl mx-auto">
+
+      <div class="frosted-card rounded-xl p-6 hover:scale-105 transition transform duration-300 shadow-lg">
+        <h2 class="text-2xl font-bold pink-glow-text mb-3">Menstrual Health</h2>
+        <p class="text-gray-300 mb-4">Learn about the menstrual cycle, cramps, PMS, and sustainable period products. Bust myths and normalize the talk.</p>
+        <a href="https://www.unicef.org/documents/guidance-menstrual-health-and-hygiene" target="_blank" class="pink-gradient-button text-white px-5 py-2 rounded-full inline-block font-medium">Explore</a>
+      </div>
+
+      <div class="frosted-card rounded-xl p-6 hover:scale-105 transition transform duration-300 shadow-lg">
+        <h2 class="text-2xl font-bold pink-glow-text mb-3">Body Positivity</h2>
+        <p class="text-gray-300 mb-4">Discover articles, videos, and campaigns that celebrate every shape, shade, and size. Confidence isn’t a trend—it’s power.</p>
+        <a href="https://www.verywellmind.com/what-is-body-positivity-4773402" target="_blank" class="pink-gradient-button text-white px-5 py-2 rounded-full inline-block font-medium">Explore</a>
+      </div>
+
+      <div class="frosted-card rounded-xl p-6 hover:scale-105 transition transform duration-300 shadow-lg">
+        <h2 class="text-2xl font-bold pink-glow-text mb-3">Mental Wellness</h2>
+        <p class="text-gray-300 mb-4">Your mind matters. Access free helplines, meditation guides, and resources for dealing with anxiety, burnout, or self-doubt.</p>
+        <a href="https://www.mind.org.uk/" target="_blank" class="pink-gradient-button text-white px-5 py-2 rounded-full inline-block font-medium">Explore</a>
+      </div>
+
+      <div class="frosted-card rounded-xl p-6 hover:scale-105 transition transform duration-300 shadow-lg">
+        <h2 class="text-2xl font-bold pink-glow-text mb-3">Safe Sex & Consent</h2>
+        <p class="text-gray-300 mb-4">Understand boundaries, protection, and respect. Because healthy relationships start with informed consent and trust.</p>
+        <a href="https://www.plannedparenthood.org/learn/sex-and-relationships" target="_blank" class="pink-gradient-button text-white px-5 py-2 rounded-full inline-block font-medium">Explore</a>
+      </div>
+
+      <div class="frosted-card rounded-xl p-6 hover:scale-105 transition transform duration-300 shadow-lg">
+        <h2 class="text-2xl font-bold pink-glow-text mb-3">Nutrition & Hormones</h2>
+        <p class="text-gray-300 mb-4">Food impacts everything—from mood to periods. Learn how to nourish your body in balance with your hormones.</p>
+        <a href="https://www.healthline.com/nutrition" target="_blank" class="pink-gradient-button text-white px-5 py-2 rounded-full inline-block font-medium">Explore</a>
+      </div>
+
+      <div class="frosted-card rounded-xl p-6 hover:scale-105 transition transform duration-300 shadow-lg">
+        <h2 class="text-2xl font-bold pink-glow-text mb-3">Community & Support</h2>
+        <p class="text-gray-300 mb-4">Find NGOs, support groups, and online communities that create safe spaces for sharing, learning, and growing together.</p>
+        <a href="https://www.reddit.com/r/Feminism/" target="_blank" class="pink-gradient-button text-white px-5 py-2 rounded-full inline-block font-medium">Explore</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="mt-20 py-8 frosted-card">
+    <div class="w-full mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-4 md:space-y-0">
+      <div class="flex items-center space-x-4">
+        <a href="https://www.instagram.com/_pink._.2025/" target="_blank" class="hover:scale-110 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <p class="text-sm text-gray-400">&copy; 2024 P.I.N.K. All rights reserved.</p>
+      </div>
+
+      <div class="text-sm text-gray-400">
+        Designed with 💖 by 
+        <a href="https://www.instagram.com/ft.dixya/" target="_blank" class="text-pink-300 hover:text-pink-100 font-medium">
+          Divya Bhosale (Koo)
+        </a>
+      </div>
+    </div>
+  </footer>
+    <script>
+        function showPage(pageId, linkId) {
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.add('hidden');
+            });
+
+            document.querySelectorAll('.nav-link-item').forEach(link => {
+                link.classList.remove('active-nav-link');
+            });
+
+            const selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.remove('hidden');
+            } else {
+                console.error(`Page ID "${pageId}" not found. Navigation issue.`);
+            }
+
+            const selectedLink = document.getElementById(linkId);
+            if (selectedLink) {
+                selectedLink.classList.add('active-nav-link');
+            }
+        }
+
+        function toggleDropdown() {
+            const dropdown = document.getElementById('events-dropdown-menu');
+            const button = document.getElementById('events-dropdown-btn');
+            const icon = document.getElementById('events-dropdown-icon');
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+            if (isExpanded) {
+                dropdown.classList.add('hidden');
+                button.setAttribute('aria-expanded', 'false');
+                icon.classList.remove('rotate-180');
+            } else {
+                dropdown.classList.remove('hidden');
+                button.setAttribute('aria-expanded', 'true');
+                icon.classList.add('rotate-180');
+            }
+        }
+
+        document.addEventListener('click', (event) => {
+            const dropdown = document.getElementById('events-dropdown-menu');
+            const button = document.getElementById('events-dropdown-btn');
+
+            if (dropdown && button && !button.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.add('hidden');
+                button.setAttribute('aria-expanded', 'false');
+                document.getElementById('events-dropdown-icon').classList.remove('rotate-180');
+            }
+        });
+
+        document.getElementById('events-dropdown-btn').addEventListener('click', toggleDropdown);
+
+        function showEvent(eventId) {
+            console.log(`Navigating to event details for: ${eventId}`);
+            
+            toggleDropdown();
+        }
+
+
+        function setupThemeToggle() {
+            const toggle = document.getElementById('theme-checkbox');
+            const body = document.body;
+
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+
+            
+            if (savedTheme === 'light') {
+                body.classList.add('light-mode');
+                toggle.checked = false; 
+            } else {
+                body.classList.remove('light-mode');
+                toggle.checked = true; 
+            }
+
+            toggle.addEventListener('change', (e) => {
+                if (e.target.checked) {
+                    
+                    body.classList.remove('light-mode'); 
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    
+                    body.classList.add('light-mode'); 
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        }
+
+        window.onload = function() {
+            setupThemeToggle();
+            document.getElementById('link-resources').classList.add('active-nav-link');
+        };
+
+    </script>
+</body>
+</html>
