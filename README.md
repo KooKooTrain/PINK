@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/pink.png" alt="PINK" width="85%" />
+  <img src="Assets/pink.png" alt="PINK" width="85%" />
 </p>
 
 ---
